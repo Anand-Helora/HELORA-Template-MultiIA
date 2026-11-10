@@ -26,7 +26,9 @@ export function slugify(text, { separator = "-", maxLength = Infinity } = {}) {
     .replace(/[œŒ]/g, "oe")
     .replace(/[æÆ]/g, "ae")
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, separator)
+    // Fonction de remplacement : le séparateur est inséré littéralement,
+    // même s'il contient des motifs spéciaux comme « $& » ou « $1 ».
+    .replace(/[^a-z0-9]+/g, () => separator)
     .split(separator)
     .filter(Boolean)
     .join(separator);
@@ -35,10 +37,21 @@ export function slugify(text, { separator = "-", maxLength = Infinity } = {}) {
     return slug;
   }
 
-  // Coupe sans laisser de séparateur pendant en fin de chaîne.
-  return slug
-    .slice(0, maxLength)
-    .split(separator)
-    .filter(Boolean)
-    .join(separator);
+  // Coupe sans laisser de séparateur, même partiel, en fin de chaîne :
+  // un séparateur n'est ajouté que s'il tient en entier et qu'au moins un
+  // caractère du mot suivant tient après lui.
+  const limit = Math.floor(maxLength);
+  let result = "";
+  for (const word of slug.split(separator).filter(Boolean)) {
+    const prefix = result === "" ? "" : separator;
+    const room = limit - result.length - prefix.length;
+    if (room <= 0) {
+      break;
+    }
+    result += prefix + word.slice(0, room);
+    if (word.length > room) {
+      break;
+    }
+  }
+  return result;
 }

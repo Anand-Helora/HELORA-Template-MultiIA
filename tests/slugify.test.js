@@ -34,6 +34,21 @@ describe("slugify", () => {
     assert.equal(slugify("un deux trois", { maxLength: 100 }), "un-deux-trois");
   });
 
+  it("insère littéralement un séparateur contenant des motifs de remplacement", () => {
+    assert.equal(slugify("hello world", { separator: "$&" }), "hello$&world");
+    assert.equal(slugify("a b c", { separator: "$$" }), "a$$b$$c");
+    assert.equal(slugify("a b", { separator: "$`$'" }), "a$`$'b");
+  });
+
+  it("ne conserve jamais un séparateur partiel lors de la troncature", () => {
+    assert.equal(slugify("a b", { separator: "--", maxLength: 2 }), "a");
+    assert.equal(slugify("a b", { separator: "--", maxLength: 3 }), "a");
+    assert.equal(slugify("a b", { separator: "--", maxLength: 4 }), "a--b");
+    assert.equal(slugify("un deux trois", { separator: "___", maxLength: 5 }), "un");
+    assert.equal(slugify("un deux trois", { separator: "___", maxLength: 6 }), "un___d");
+    assert.equal(slugify("hello world", { separator: "$&", maxLength: 6 }), "hello");
+  });
+
   it("renvoie une chaîne vide si aucun caractère n'est exploitable", () => {
     assert.equal(slugify(""), "");
     assert.equal(slugify("!!! ??? ..."), "");
