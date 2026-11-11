@@ -42,21 +42,37 @@ La direction artistique recommandée pour les **nouvelles applications web HELOR
 - **Expérience** : soigner aussi les transitions entre écrans, les états de boutons, les retours de succès/erreur et la sensation de réactivité. Ne pas ajouter de faux indicateurs, de chiffres décoratifs ou de données imaginaires.
 - **Deux variantes possibles** : une présentation « futuriste expressive » pour tableaux de bord et démonstrations ; une présentation « futuriste opérationnelle » plus calme pour saisie terrain, procédures répétitives et interfaces critiques. Proposer la variante adaptée et expliquer le choix.
 
-### 2.2. Ambiances animées en arrière-plan
+### 2.2. Familles visuelles validées par le pilote
 
-Pour les nouvelles interfaces web, **proposer par défaut une ambiance visuelle légèrement animée**, lorsque le contexte, les performances et les préférences de l'utilisateur le permettent. Exemples appropriés :
-- dégradé ou halo turquoise très lent et peu contrasté derrière le contenu ;
-- grille technique discrète avec mouvement quasi imperceptible ;
-- quelques points lumineux ou lignes de flux très sobres, sans ressembler à de vraies alertes ;
-- micro-interactions sur les commandes : apparition maîtrisée, focus, confirmation, transition de panneau.
+Le pilote fictif [HELORA-UX-Pilote](https://anand-helora.github.io/HELORA-UX-Pilote/) a permis de comparer quatre **directions artistiques optionnelles**. Ce sont des références de conception, pas quatre thèmes à installer automatiquement dans chaque application :
 
-**Contraintes impératives :**
-- L'animation est **décorative**, dans un calque non interactif ; elle ne capte jamais le pointeur, le focus ni les lecteurs d'écran et ne recouvre aucun message.
-- Prévoir un **rendu fixe complet**, notamment avec `@media (prefers-reduced-motion: reduce)`. Ne pas déclencher automatiquement d'effets clignotants, d'éclairs ou de mouvements rapides.
-- Favoriser CSS et des effets de `transform`/`opacity` modérés ; limiter les particules, éviter un rendu Canvas continu ou une dépendance 3D sans justification. Vérifier fluidité, batterie et fonctionnement sur mobile.
-- Préserver les contrastes réels en présence de l'animation ; aucun texte important sur un arrière-plan mouvant dont le contraste fluctue.
-- En cas de matériel ancien, d'usage terrain difficile, d'interface critique ou de préférence de réduction du mouvement, **la version statique prime**.
-- Ne pas simuler d'urgence, d'alarme, de surveillance ou d'état d'équipement par une animation décorative.
+| Ambiance | Caractère et comportement proposé | Contexte conseillé |
+| --- | --- | --- |
+| **Clair premium** | Fonds lumineux, panneaux lisibles, accents turquoise et profondeur maîtrisée ; décor calme ou fixe | Saisie, maintenance, consultation prolongée |
+| **Neural** | Graphe de nœuds et connexions, impulsions lumineuses empruntant **des trajets changeants** plutôt qu'une même boucle répétée | Pilotage exploratoire et démonstrations |
+| **Orbital** | Planètes abstraites, anneaux elliptiques et satellites mobiles ; **point lumineux en tête, traînée derrière** | Présentations et interfaces d'exploration |
+| **Hybride** | Réseau neuronal et orbites qui se rejoignent visuellement, sans masquer les données | Démonstrations immersives |
+
+Le concepteur choisit avec l'humain **un thème pertinent** ou un sélecteur permettant de comparer plusieurs ambiances. Une interface métier ne doit pas obligatoirement proposer les quatre. Si un sélecteur est retenu, le changement ne doit pas recharger la page, réinitialiser le formulaire, perdre le focus ou la position de navigation ; une préférence locale non sensible peut être mémorisée en gérant les erreurs de stockage.
+
+### 2.2.1. Mouvement perceptible et non répétitif, quand souhaité
+
+Une démonstration expressive doit montrer **un mouvement reconnaissable dans les premières secondes**, mais ne doit jamais fatiguer l'utilisateur ou prendre le pas sur sa tâche. Les halos ou grilles quasi immobiles ne remplacent pas une vraie composition cinétique si le brief exige une animation vivante.
+
+- Neural : distinguer **structure du réseau** et **itinéraires des impulsions**. Varier les bifurcations pendant une même session, sans régénérer l'ensemble des nœuds à chaque image.
+- Orbital : synchroniser tête lumineuse, traînée et sens réel du parcours ; vérifier différentes positions de l'orbite, y compris le passage devant/derrière les sphères.
+- Utiliser en priorité SVG/CSS ou une technique légère ; limiter le nombre d'éléments, les reconstructions du DOM et le travail sur mobile. Un moteur d'animation en continu doit être justifié et mesuré.
+- Prévoir un bouton **Pause/Reprise** fonctionnel, la suspension dans les onglets non visibles et **un rendu totalement statique** avec `prefers-reduced-motion: reduce`. Éviter flashes et clignotements.
+- Dessiner le décor **derrière le contenu**, sans capter clics ou focus, en `aria-hidden` lorsque approprié. Protéger les zones calmes autour des titres, formulaires et commandes.
+- Vérifier les animations **en vidéo ou en navigateur pendant au moins plusieurs cycles**, pas uniquement sur capture fixe ; vérifier lisibilité, zoom texte, formats mobile/PC, batterie et fluidité.
+
+En contexte hospitalier, ne jamais suggérer une **alerte réelle**, une surveillance en temps réel ou un état clinique/technique au moyen d'un décor fictif.
+
+### 2.2.2. Option de déploiement web et gestion du cache
+
+Pour une application statique déployée sur GitHub Pages, envisager un build **optionnel** produisant des noms d'assets hachés selon leur contenu (CSS, JavaScript et imports transitifs). Une page HTML actualisée référence alors les bons fichiers, sans vider le cache ou passer en navigation privée. Tester le **chemin de base propre au dépôt**, les imports, les références CSS et le site construit en navigateur. Ne pas copier aveuglément le script du pilote : adapter et vérifier les cas limites du projet.
+
+**Ce template n'active aucun déploiement.** Tout workflow de publication automatique dans un dépôt dérivé exige une autorisation explicite et limitée, puis une fusion humaine en `main` ; les PR ne doivent pas publier les données réelles ou les secrets.
 
 ### 2.3. Exigences dans la conception et la revue
 
