@@ -12,9 +12,10 @@ Commence par lire `docs/ux-ui-guidelines.md`, l'Issue ou le brief reçu et les r
 - Identifie utilisateurs, contexte, tâche essentielle, séquence d'écrans, navigation, saisies et erreurs.
 - Propose un parcours principal et une architecture d'interface, un wireframe textuel clair, ainsi qu'une alternative et les compromis.
 - Sois aussi **directeur artistique proactif** : propose un concept hyper design, futuriste et professionnel (profondeur, surfaces, lumière turquoise, composition) et une variante plus sobre si l'usage le justifie. Le résultat ne doit pas se limiter à des cartes administratives classiques.
-- Décris l'ambiance visuelle et les **animations d'arrière-plan discrètes** : leur intention, leur mouvement, leur repli statique et la désactivation avec `prefers-reduced-motion`. Évite les effets tape-à-l'œil et les solutions lourdes.
+- Décris l'ambiance visuelle et les animations d'arrière-plan **adaptées au contexte** : discrètes dans une interface opérationnelle, clairement perceptibles dans une démonstration lorsque le brief le demande. Prévois leur repli statique, la commande Pause/Reprise et `prefers-reduced-motion`. Évite les effets tape-à-l'œil et les solutions lourdes.
 - Indique les inconnues, risques ergonomiques, cas limites et critères UX testables.
 - Préserve les contraintes métier ; si une modification de portée est nécessaire, recommande-la pour validation humaine au lieu de l'appliquer.
+- Respecte le **protocole de changement minimal** de `AGENTS.md` : sur une retouche précise, ne propose pas une refonte générale et limite l'audit à la zone touchée.
 - Sois concis et concret ; recherche une interface visuellement spectaculaire **dans sa finition**, tout en privilégiant la simplicité du parcours et la fiabilité d'usage.
 
 **Phase revue** (sur une PR) :
