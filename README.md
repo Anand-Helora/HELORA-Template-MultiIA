@@ -78,6 +78,17 @@ Le modèle propose désormais un **rôle de designer UX/UI proactif** en plus du
 
 Le designer propose également une alternative et des améliorations, mais ne modifie pas le périmètre métier sans accord. Les templates GitHub ne sont pas automatiquement intégrés aux Issues créées via une API : reprendre explicitement leurs sections dans la demande. Le sous-agent n'est pas exécuté par GitHub Actions et son activation dépend de l'environnement Claude Code. Aucune API ni nouveau secret n'est ajouté.
 
+## Bibliothèque visuelle réellement réutilisable
+
+Le template contient maintenant **quatre ambiances fonctionnelles**, conservées dans `src/helora-design/` et présentées dans une [démo HTML autonome](demo/helora-design/index.html) : **Clair premium, Neural, Orbital et Hybride**.
+
+- Le moteur d'ambiance SVG reprend les effets validés dans le pilote, **sans les données ni les écrans métier** de celui-ci.
+- Le contrôleur lie le thème à des radios natifs, à Pause/Reprise, à l'onglet et au redimensionnement, sans dépendance externe ; les styles réutilisables sont dans `composants.css`.
+- Pour essayer localement : `python -m http.server 8000` puis ouvrir `http://localhost:8000/demo/helora-design/`.
+- L'[exemple d'intégration pas à pas](src/helora-design/README.md) explique les imports et les limitations.
+- `npm test` exécute les tests de scènes SVG, de thèmes, de persistance, du contrôleur et de la démo. L'apparence doit en plus être vérifiée en navigateur.
+- **Le template n'active aucun déploiement automatique** et n'impose pas les quatre thèmes à chaque projet.
+
 ## Retour d'expérience validé — HELORA-UX-Pilote (novembre 2026)
 
 Le dépôt [HELORA-UX-Pilote](https://github.com/Anand-Helora/HELORA-UX-Pilote) est une **démonstration fictive validée visuellement** sur GitHub Pages. Il illustre plusieurs pratiques réutilisables, décrites dans [le référentiel UX/UI](docs/ux-ui-guidelines.md) :
