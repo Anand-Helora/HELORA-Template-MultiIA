@@ -248,10 +248,12 @@ export function avancerRoute(tete) {
  * le calque `conteneur` : survit aux régénérations de scène (innerHTML).
  */
 export function brancherRoutes(conteneur) {
-  conteneur.addEventListener("animationiteration", (evenement) => {
+  const changementEtape = (evenement) => {
     const cible = evenement.target;
     if (cible?.classList?.contains("impulsion--tete") && cible.dataset?.route) avancerRoute(cible);
-  });
+  };
+  conteneur.addEventListener("animationiteration", changementEtape);
+  return () => conteneur.removeEventListener("animationiteration", changementEtape);
 }
 
 /* ------------------------------------------------------------------------- */
