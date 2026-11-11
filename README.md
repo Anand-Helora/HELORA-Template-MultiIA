@@ -69,7 +69,7 @@ Utiliser uniquement des données fictives. Aucune licence n'est choisie pour l'i
 
 Le modèle propose désormais un **rôle de designer UX/UI proactif** en plus du développement Claude Code et de la revue technique Codex :
 
-- `docs/ux-ui-guidelines.md` : principes ergonomiques et profil visuel initial « HELORA web » (non officiel et à ajuster selon le projet) ;
+- `docs/ux-ui-guidelines.md` : principes ergonomiques et **direction graphique « HELORA Futuristic »** pour les nouveaux projets web : style très contemporain, palette `#044550` / `#009E99` / `#E6F5F5`, effets de profondeur et animations d'ambiance discrètes avec repli statique et support de `prefers-reduced-motion` ; identité à ajuster selon le projet ;
 - `.claude/agents/ux-designer.md` : consignes du sous-agent de projet Claude Code pour proposer des écrans, challenger les choix et relire l'interface ;
 - `.github/ISSUE_TEMPLATE/fonctionnalite-ux.md` : brief métier + conception **avant développement** ;
 - `.github/pull_request_template.md` : liste de vérification UX **après développement**.
