@@ -96,6 +96,7 @@ describe("HELORA Design : intégration indépendante du métier", () => {
     assert.equal(e.controleur.enPause, false);
     e.controleur.detruire();
     assert.equal(e.decor.innerHTML, "");
+    assert.equal(e.decor.listeners.has("animationiteration"), false, "animationiteration détaché");
     assert.equal(e.fenetre.listeners.has("resize"), false);
     assert.equal(e.doc.listeners.has("visibilitychange"), false);
     assert.equal(e.controleur.choisirTheme("clair"), false);
