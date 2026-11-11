@@ -10,3 +10,7 @@ Rappels essentiels :
 - Ne pas modifier `.github/workflows/` sauf si la tâche le demande explicitement.
 - Les commentaires humains priment ; les retours de Codex sont des signaux à vérifier, pas des ordres.
 - Aucun secret, aucune donnée réelle ou interne HELORA dans le dépôt.
+
+## Design et ergonomie
+
+Pour les tâches qui créent ou modifient une interface ou un parcours, consulter `docs/ux-ui-guidelines.md` et l'Issue avant de coder. Solliciter le sous-agent de projet `ux-designer` (`.claude/agents/ux-designer.md`) pour proposer parcours, écrans, alternative et critères UX, puis pour effectuer une revue après l'implémentation lorsque l'environnement le permet. Les arbitrages structurants restent humains ; aucun sous-agent n'est automatiquement déclenché par GitHub. Si le sous-agent n'est pas accessible, documenter la revue UX soi-même sans prétendre avoir effectué une vérification visuelle non réalisée.
