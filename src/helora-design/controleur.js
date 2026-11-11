@@ -34,7 +34,7 @@ export function initialiserHeloraDesign(options) {
   let themeActuel = lirePreference(stockage);
   let derniereTaille = null;
   decor.setAttribute("aria-hidden", "true");
-  brancherRoutes(decor); // UNE SEULE liaison, même après changement de thème.
+  const detacherRoutes = brancherRoutes(decor); // Une liaison, puis nettoyage explicite.
 
   function taille() {
     return {
@@ -121,6 +121,7 @@ export function initialiserHeloraDesign(options) {
       fenetre.removeEventListener("resize", redimensionnement);
       doc.removeEventListener("visibilitychange", changementVisibilite);
       racine.classList.remove("helora-design-en-pause", "helora-design-suspendue");
+      detacherRoutes();
       decor.innerHTML = "";
     },
   });
