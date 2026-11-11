@@ -18,7 +18,8 @@
   outline-offset: 3px;
   box-shadow: 0 0 0 7px var(--halo-focus);
 }
-.helora-page a { color: var(--accent-texte); }
+/* Ne pas écraser la couleur contrastée des liens présentés en boutons. */
+.helora-page a:not(.helora-bouton) { color: var(--accent-texte); }
 .helora-page button, .helora-page input { font: inherit; }
 .helora-design-contenu { position: relative; z-index: 1; }
 .helora-coquille { width: min(1180px, calc(100% - 36px)); margin-inline: auto; }
