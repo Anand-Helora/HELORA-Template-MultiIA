@@ -17,12 +17,12 @@ title: "[Fonctionnalité] "
 <!-- Règles impératives, entrées, sorties, intégrations, limites, priorités. Pas de données sensibles. -->
 
 ## Contraintes et profil graphique
-<!-- HELORA web (proposition initiale dans docs/ux-ui-guidelines.md), autre identité, exemples visuels, composants à conserver, responsive. -->
+<!-- HELORA Futuristic (direction proposée dans docs/ux-ui-guidelines.md), autre identité si souhaitée, exemples visuels, animations d'ambiance souhaitées ou à éviter, composants à conserver, responsive. -->
 
 ## Proposition du designer UX/UI — AVANT développement
 <!-- À compléter après analyse du brief : proposition d'écrans et de navigation, wireframe textuel, composants et états (vide/chargement/erreur/succès), alternative et compromis. -->
-- Proposition :
-- Alternative :
+- Proposition (inclure direction visuelle et animation d'ambiance / repli statique si applicable) :
+- Alternative (y compris version plus sobre si utile) :
 - Risques / hypothèses à valider :
 - Décision humaine sur les choix structurants :
 
