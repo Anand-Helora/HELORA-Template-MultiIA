@@ -64,3 +64,18 @@ Utiliser uniquement des données fictives. Aucune licence n'est choisie pour l'i
 - La CI fournie ne couvre que du **JavaScript exécuté par Node.js** (`node --test`). Elle ne teste ni le rendu HTML/CSS ni le comportement dans un navigateur : des tests navigateur (Playwright, par exemple) pourront être ajoutés au cas par cas, quand une application en aura besoin.
 - Pour d'autres langages ou environnements (Python, AutoLISP, Revit/Dynamo, etc.), le workflow et les tests doivent être **adaptés** à l'outil concerné, et non réutilisés à l'aveugle. Certains environnements (AutoCAD, Revit) ne sont pas disponibles sur les machines GitHub Actions : seules les parties testables hors logiciel peuvent y être vérifiées.
 - GitHub Actions consomme des minutes de calcul ; les quotas dépendent du type de compte et de la visibilité du dépôt.
+
+## Conception UX/UI assistée par agent
+
+Le modèle propose désormais un **rôle de designer UX/UI proactif** en plus du développement Claude Code et de la revue technique Codex :
+
+- `docs/ux-ui-guidelines.md` : principes ergonomiques et profil visuel initial « HELORA web » (non officiel et à ajuster selon le projet) ;
+- `.claude/agents/ux-designer.md` : consignes du sous-agent de projet Claude Code pour proposer des écrans, challenger les choix et relire l'interface ;
+- `.github/ISSUE_TEMPLATE/fonctionnalite-ux.md` : brief métier + conception **avant développement** ;
+- `.github/pull_request_template.md` : liste de vérification UX **après développement**.
+
+**Circuit recommandé :** brainstorming → Issue avec brief et proposition UX → validation des arbitrages → développement sur PR → tests automatiques + revue Codex → revue UX sur rendu réel si disponible → fusion manuelle.
+
+Le designer propose également une alternative et des améliorations, mais ne modifie pas le périmètre métier sans accord. Les templates GitHub ne sont pas automatiquement intégrés aux Issues créées via une API : reprendre explicitement leurs sections dans la demande. Le sous-agent n'est pas exécuté par GitHub Actions et son activation dépend de l'environnement Claude Code. Aucune API ni nouveau secret n'est ajouté.
+
+**Limite du socle :** le dépôt ne fournit toujours pas de test navigateur ni de validation visuelle automatique. Il faut une application exécutable et, le cas échéant, des tests Playwright et des captures fictives pour effectuer une vraie revue visuelle. Ne pas confondre « code revu » et « interface observée ».
