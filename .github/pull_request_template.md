@@ -2,9 +2,14 @@
 <!-- Lier l'Issue et résumer l'objectif livré. -->
 
 ## Modifications et tests
-<!-- Fichiers importants, commandes exécutées et résultats. Ne pas déclarer « OK » si non testé. -->
-- Tests :
-- Limites :
+<!-- Ne pas déclarer « OK » si non testé. Éviter les changements hors Issue. -->
+- Cause / problème :
+- Modifications exactes par fichier :
+- Justification de chaque fichier additionnel :
+- Tests et vérifications réellement exécutés :
+- Risques, limites, cas non testés :
+- [ ] `git diff`, `git diff --check` et `git diff --stat` inspectés ; aucun changement sans rapport.
+- [ ] Aucun refactoring transversal non validé ; aucune fusion automatique.
 
 ## UX/UI — si interface ou parcours modifié
 - [ ] La proposition de design a été confrontée au brief et ses arbitrages sont documentés.
