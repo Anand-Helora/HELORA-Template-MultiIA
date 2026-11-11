@@ -78,4 +78,16 @@ Le modèle propose désormais un **rôle de designer UX/UI proactif** en plus du
 
 Le designer propose également une alternative et des améliorations, mais ne modifie pas le périmètre métier sans accord. Les templates GitHub ne sont pas automatiquement intégrés aux Issues créées via une API : reprendre explicitement leurs sections dans la demande. Le sous-agent n'est pas exécuté par GitHub Actions et son activation dépend de l'environnement Claude Code. Aucune API ni nouveau secret n'est ajouté.
 
+## Retour d'expérience validé — HELORA-UX-Pilote (novembre 2026)
+
+Le dépôt [HELORA-UX-Pilote](https://github.com/Anand-Helora/HELORA-UX-Pilote) est une **démonstration fictive validée visuellement** sur GitHub Pages. Il illustre plusieurs pratiques réutilisables, décrites dans [le référentiel UX/UI](docs/ux-ui-guidelines.md) :
+
+- Quatre ambiances **au choix selon l'usage** : Clair premium, Neural, Orbital et Hybride. Les mouvements neural/orbital doivent être perceptibles, varier lorsque pertinent et rester contrôlables (Pause/Reprise, mouvement réduit).
+- Une navigation desktop et mobile cohérente avec Retour explicite, historique du navigateur, gestion du focus et états d'erreur/vide.
+- Des corrections **chirurgicales** : analyse de la cause, modifications localisées, `git diff --stat`, justification des fichiers et tests de non-régression.
+- Une collaboration Claude → revue Codex → corrections → nouvelle revue, avec une **limite recommandée de trois cycles** avant retour humain ; fusion manuelle uniquement.
+- Pour les sites statiques publiés, un **build optionnel à assets hachés** pour limiter les incohérences de cache. Chaque dépôt doit adapter et tester son propre chemin GitHub Pages ; aucun déploiement automatique n'est autorisé ici par défaut.
+
+**À ne pas confondre** : le pilote montre ce qui est possible, mais son tableau de bord, ses 13 équipements fictifs, ses animations SVG, ses scripts de construction et son workflow Pages **ne sont pas copiés dans ce modèle léger**. Un nouveau projet commence par son besoin utilisateur ; il ne reprend ces composants qu'en connaissance de cause. Les données réelles de l'hôpital et les secrets restent hors des dépôts publics.
+
 **Limite du socle :** le dépôt ne fournit toujours pas de test navigateur ni de validation visuelle automatique. Il faut une application exécutable et, le cas échéant, des tests Playwright et des captures fictives pour effectuer une vraie revue visuelle. Ne pas confondre « code revu » et « interface observée ».
